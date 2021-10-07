@@ -30,6 +30,7 @@ const Navbar = () => {
           <a
             href="https://api.whatsapp.com/send/?phone=6282320189591&text=Hai"
             target="_blank"
+            rel="noreferrer"
           >
             <button>HUBUNGI KAMI</button>
           </a>

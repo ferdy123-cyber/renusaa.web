@@ -27,10 +27,18 @@ export default function Home() {
           </div>
         </div>
         <div className={style.sosmed}>
-          <a href="https://www.instagram.com/reenusa_/" target="_blank">
+          <a
+            href="https://www.instagram.com/reenusa_/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <Image className="img" src={ig} width={35} height={35} alt="" />
           </a>
-          <a href="https://dribble.com/reenusa" target="_blank">
+          <a
+            href="https://dribble.com/reenusa"
+            target="_blank"
+            rel="noreferrer"
+          >
             <Image
               className="img"
               src={dribble}
@@ -39,7 +47,11 @@ export default function Home() {
               alt=""
             />
           </a>
-          <a href="https://www.behance.net/reenusa" target="_blank">
+          <a
+            href="https://www.behance.net/reenusa"
+            target="_blank"
+            rel="noreferrer"
+          >
             <Image
               className="img"
               src={behance}
