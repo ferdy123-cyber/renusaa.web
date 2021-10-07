@@ -18,6 +18,7 @@ const Footer = () => {
         <a
           href="https://api.whatsapp.com/send/?phone=6282320189591&text=Hai%20Hai"
           target="_blank"
+          rel="noreferrer"
           className="btn"
         >
           <button>HUBUNGI KAMI</button>
