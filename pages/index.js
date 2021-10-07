@@ -65,7 +65,7 @@ export default function Home() {
           <p>
             Cek Testimoni{" "}
             <span>
-              <Image src={right} width={14} height={14} />
+              <Image src={right} width={14} height={14} alt="" />
             </span>
           </p>
         </div>

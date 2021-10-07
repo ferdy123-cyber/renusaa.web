@@ -35,10 +35,18 @@ const Footer = () => {
             <b>rizalnugrahasaputra@gmail.com</b>
           </a>
           <div className="logoSosmed">
-            <a href="https://www.instagram.com/reenusa_/" target="_blank">
+            <a
+              href="https://www.instagram.com/reenusa_/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Image className="img" src={ig} width={30} height={30} alt="" />
             </a>
-            <a href="https://dribble.com/reenusa" target="_blank">
+            <a
+              href="https://dribble.com/reenusa"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Image
                 className="img"
                 src={dribble}
@@ -47,7 +55,11 @@ const Footer = () => {
                 alt=""
               />
             </a>
-            <a href="https://www.behance.net/reenusa" target="_blank">
+            <a
+              href="https://www.behance.net/reenusa"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Image
                 className="img"
                 src={behance}
