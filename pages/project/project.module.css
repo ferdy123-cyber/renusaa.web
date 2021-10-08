@@ -1,0 +1,10 @@
+.container {
+    width: 80%;
+    margin: 20px auto;
+    margin-top: 50px;
+    height: 100vh;
+}
+
+.container h1 {
+    color: #5d5c55;
+}

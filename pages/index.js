@@ -6,6 +6,7 @@ import ig from "../public/Image/instagram.png";
 import dribble from "../public/Image/dribbble.png";
 import behance from "../public/Image/behance.png";
 import right from "../public/Image/right-arrow.png";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -23,7 +24,9 @@ export default function Home() {
               <b>reenusa studio</b> akan fokus bekerja membangun brand bisnis
               Anda.
             </p>
-            <button>Lihat Project Kami</button>
+            <Link href="/project">
+              <button>Lihat Project Kami</button>
+            </Link>
           </div>
         </div>
         <div className={style.sosmed}>
