@@ -2,14 +2,14 @@ import Layout from "../../../components/layout admin";
 import { Image } from "antd";
 
 const Project = (props) => {
-  const { data } = props;
+  const { projectData } = props;
 
-  console.log(data);
+  console.log(projectData);
   return (
     <Layout>
       <div className="">
         <h3>Project</h3>
-        {data.data.map((e) => {
+        {projectData.map((e) => {
           return (
             <Image
               key={e.id}
@@ -32,7 +32,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      data,
+      projectData: data.data,
     }, // will be passed to the page component as props
   };
 }
