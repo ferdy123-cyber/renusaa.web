@@ -30,12 +30,6 @@ export async function getServerSideProps() {
   const res = await fetch(`http://localhost:5000/portfolio`);
   const data = await res.json();
 
-  if (!data) {
-    return {
-      notFound: true,
-    };
-  }
-
   return {
     props: {
       data,
