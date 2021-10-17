@@ -26,7 +26,7 @@ const Project = (props) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStatiProps() {
   const res = await fetch(`http://localhost:5000/portfolio`);
   const data = await res.json();
 
