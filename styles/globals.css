@@ -37,7 +37,7 @@ a {
   justify-content: space-between;
   padding-top: 20px;
   position: relative;
-  height: 120px;
+  height: 130px;
   transition: 0.4s ease;
 }
 
@@ -51,7 +51,6 @@ a {
 
 .nav-bar .navigation {
   padding-top: 20px;
-  width: calc(100% - 400px);
   display: flex;
   justify-content: space-between;
   font-size: 13px;
@@ -59,13 +58,35 @@ a {
   color: #5d5c55;
 }
 
-.hamburger-menu {
+.nav-bar .navigation2 {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5d5c55;
+}
+
+.notifImg {
+  margin-left: 18px;
+}
+
+.adminNavbar {
+  width: calc(100% - 600px);
+}
+
+.userNavbar {
+  width: calc(100% - 400px);
+}
+
+.hamburger-menu, .hamburger-menu2 {
   display: none;
 }
 
-.collapse-menu {
+.collapse-menu, .collapse-menu2 {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
@@ -164,12 +185,17 @@ a {
     max-width: 280px;
   }
   
-  .nav-bar .navigation {
-    width: calc(100% - 290px);
+
+  .adminNavbar {
+    width: calc(100% - 450px);
+  }
+  
+  .userNavbar {
+    width: calc(100% - 310px);
   }
 }
 
-@media (max-width: 980px) {
+@media (max-width: 990px) {
   .nav-bar {
     align-items: flex-start;
   }
@@ -182,10 +208,19 @@ a {
   .activeNav {
     height: 350px;
   }
+
+  .activeNav2 {
+    height: 260px;
+  }
   
   .nav-bar .navigation {
     display: block;
     width: calc(100% - 210px);
+  }
+
+  .nav-bar .navigation2 {
+    display: block;
+    width: calc(100% - 310px);
   }
 
   .collapse-menu {
@@ -207,8 +242,9 @@ a {
   }
 
   .hamburger-menu {
-    display: block;
-    text-align: end;
+    display: flex;
+    justify-content: end;
+    align-items: center;
     margin-top: -10px;
     margin-bottom: 20px;
   }
@@ -223,7 +259,9 @@ a {
   }
 
   .active {
-    height: 240px;
+    height: 235px;
+    padding-top: 10px;
+    box-sizing: border-box;
   }
 
   .footer .top-footer {
@@ -246,4 +284,48 @@ a {
     margin: 0px auto;
   }
 
+}
+
+@media (max-width: 680px) {
+  .nav-bar .navigation2 {
+    display: block;
+    width: calc(100% - 120px);
+    padding-left: 8px;
+  }
+
+  .collapse-menu2 {
+    display: block;
+    height: auto;
+    overflow: hidden;
+    height: 0px;
+    transition: 0.4s ease;
+    position: absolute;
+    right: 0;
+    top: 110px;
+    background-color: rgba(245, 245, 245, 0.815);
+    border-radius: 5px;
+    text-align: center;
+  }
+  .hamburger-menu2 {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: -10px;
+    margin-bottom: 20px;
+  }
+
+  .hamburger-menu2 button {
+    background-color: white;
+    outline: none;
+    border: rgb(241, 214, 125) 2px solid;
+    height: 50px;
+    width: 100%;
+    max-width: 100px;
+  }
+
+  .active2 {
+    height: 105px;
+    padding-top: 10px;
+    box-sizing: border-box;
+  }
 }

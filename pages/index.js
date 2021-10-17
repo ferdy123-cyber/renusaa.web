@@ -15,7 +15,13 @@ export default function Home() {
         <div className={style.background}></div>
         <div className={style.header}>
           <div className={style.image}>
-            <Image src={HomeImg} height={715} width={750} alt="" />
+            <Image
+              src={HomeImg}
+              height={715}
+              width={750}
+              alt=""
+              placeholder="blur"
+            />
           </div>
           <div className={style.text}>
             <h1>Bangun Brand Anda Sekarang.</h1>

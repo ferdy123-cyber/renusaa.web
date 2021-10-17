@@ -1,0 +1,13 @@
+.img {
+    text-align: center;
+    opacity: 0.8;
+    padding-bottom: 20px;
+}
+
+.submitBtn {
+    background-color: #242320;
+}
+
+.submitBtn:hover {
+    background-color: #35332f;
+}
