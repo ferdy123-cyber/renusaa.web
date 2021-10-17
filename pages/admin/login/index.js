@@ -10,7 +10,7 @@ const LoginAdmin = () => {
       <div className="max-w-md w-full space-y-8">
         <div>
           <div className={`${style.img} mx-auto h-15 w-auto`}>
-            <Image src={brandLogo} width={50} height={70} />
+            <Image src={brandLogo} width={50} height={70} alt="" />
           </div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Login ke akun kamu

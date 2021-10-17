@@ -25,7 +25,7 @@ const Navbar = () => {
         <div className="hamburger-menu2">
           <button onClick={() => setNav()}>Menu</button>
           <div className="notifImg">
-            <Image src={notifImage} width={26} height={26} />
+            <Image src={notifImage} width={26} height={26} alt="" />
           </div>
         </div>
         <div className={`collapse-menu2 ${openNav === true ? "active2" : ""}`}>
@@ -35,7 +35,7 @@ const Navbar = () => {
           <p>LIST TESTIMONI</p>
           <p>LOGOUT</p>
           <div className="notifImg">
-            <Image src={notifImage} width={26} height={26} />
+            <Image src={notifImage} width={26} height={26} alt="" />
           </div>
         </div>
       </div>
