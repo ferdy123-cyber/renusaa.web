@@ -12,10 +12,12 @@ const Project = (props) => {
         {data.data.map((e) => {
           return (
             <Image
+              key={e.id}
               style={{ objectFit: "contain" }}
               width={200}
               height={200}
               src={`https://docs.google.com/uc?id=${e.img_id}`}
+              alt=""
             />
           );
         })}
