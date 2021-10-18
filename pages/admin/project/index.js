@@ -34,6 +34,7 @@ const Project = () => {
             //   alt=""
             // />
             <LazyLoadImage
+              key={e.id}
               style={{ objectFit: "contain" }}
               alt=""
               height={350}
