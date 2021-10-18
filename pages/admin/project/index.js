@@ -27,7 +27,7 @@ const Project = (props) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch("https://jsonplaceholder.typicode.com/photos");
   const data = await res.json();
 
