@@ -29,7 +29,7 @@ const Project = (props) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:5000/portfolio");
+  const res = await fetch("https://app.ferdyfian.xyz/portfolio");
   const data = await res.json();
 
   return {
