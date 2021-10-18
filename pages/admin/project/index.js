@@ -27,12 +27,21 @@ const Project = (props) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:5000/portfolio");
-  const data = await res.json();
+  // const res = await fetch("http://localhost:5000/portfolio");
+  // const data = await res.json();
 
   return {
     props: {
-      projectData: data.data,
+      projectData: [
+        {
+          id: 1,
+          img_id: "1-a7TNxrk9Mc5AeQ2R4owtHX_CnVxH76f",
+        },
+        {
+          id: 2,
+          img_id: "1-a7TNxrk9Mc5AeQ2R4owtHX_CnVxH76f",
+        },
+      ],
     }, // will be passed to the page component as props
   };
 }
