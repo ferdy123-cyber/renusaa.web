@@ -1,5 +1,5 @@
 import Layout from "../../../components/layout admin";
-import Image from "antd";
+import { Image } from "antd";
 import LazyLoad from "react-lazyload";
 
 const Project = (props) => {
@@ -12,13 +12,12 @@ const Project = (props) => {
         <h3>Project</h3>
         {projectData.map((e) => {
           return (
-            <LazyLoad key={e.id} height={200} offset={100}>
+            <LazyLoad key={e.id} height={200} offset={100} placeholder={true}>
               <Image
                 style={{ objectFit: "contain" }}
                 width={200}
                 height={200}
-                // src={`https://docs.google.com/uc?id=${e.img_id}`}
-                src={e.url}
+                src={`https://docs.google.com/uc?id=${e.img_id}`}
                 alt=""
               />
             </LazyLoad>
@@ -30,7 +29,7 @@ const Project = (props) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/photos");
+  const res = await fetch("http://localhost:5000/portfolio");
   const data = await res.json();
 
   return {
