@@ -1,6 +1,6 @@
 import Layout from "../../../components/layout admin";
-import { Image } from "antd";
-import LazyLoad from "react-lazyload";
+import Image from "next/image";
+// import LazyLoad from "react-lazyload";
 
 const Project = (props) => {
   const { projectData } = props;
@@ -12,15 +12,14 @@ const Project = (props) => {
         <h3>Project</h3>
         {projectData.map((e) => {
           return (
-            <LazyLoad key={e.id} height={200} offset={100} placeholder={true}>
-              <Image
-                style={{ objectFit: "contain" }}
-                width={200}
-                height={200}
-                src={`https://docs.google.com/uc?id=${e.img_id}`}
-                alt=""
-              />
-            </LazyLoad>
+            <Image
+              style={{ objectFit: "contain" }}
+              width={350}
+              height={350}
+              src={`https://docs.google.com/uc?id=${e.img_id}`}
+              alt=""
+              placeholder="blur"
+            />
           );
         })}
       </div>
@@ -28,7 +27,7 @@ const Project = (props) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getData() {
   const res = await fetch("https://app.ferdyfian.xyz/portfolio");
   const data = await res.json();
 
