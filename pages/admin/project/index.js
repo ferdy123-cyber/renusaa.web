@@ -13,6 +13,7 @@ const Project = (props) => {
         {projectData.map((e) => {
           return (
             <Image
+              key={e.id}
               style={{ objectFit: "contain" }}
               width={350}
               height={350}
