@@ -1,5 +1,6 @@
 import Layout from "../../../components/layout admin";
-import { Image } from "antd";
+import Image from "antd";
+import LazyLoad from "react-lazyload";
 
 const Project = (props) => {
   const { projectData } = props;
@@ -11,15 +12,17 @@ const Project = (props) => {
         <h3>Project</h3>
         {projectData.map((e) => {
           return (
-            <Image
-              key={e.id}
-              style={{ objectFit: "contain" }}
-              width={200}
-              height={200}
-              // src={`https://docs.google.com/uc?id=${e.img_id}`}
-              src={e.url}
-              alt=""
-            />
+            <LazyLoad height={200}>
+              <Image
+                key={e.id}
+                style={{ objectFit: "contain" }}
+                width={200}
+                height={200}
+                // src={`https://docs.google.com/uc?id=${e.img_id}`}
+                src={e.url}
+                alt=""
+              />
+            </LazyLoad>
           );
         })}
       </div>
