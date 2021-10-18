@@ -12,9 +12,8 @@ const Project = (props) => {
         <h3>Project</h3>
         {projectData.map((e) => {
           return (
-            <LazyLoad height={200} offset={100}>
+            <LazyLoad key={e.id} height={200} offset={100}>
               <Image
-                key={e.id}
                 style={{ objectFit: "contain" }}
                 width={200}
                 height={200}
