@@ -9,14 +9,14 @@ const Project = (props) => {
     <Layout>
       <div className="">
         <h3>Project</h3>
-        {projectData.data.map((e) => {
+        {projectData.map((e) => {
           return (
             <Image
               key={e.id}
               style={{ objectFit: "contain" }}
               width={200}
               height={200}
-              src={`https://docs.google.com/uc?id=${e.img_id}`}
+              src={`https://docs.google.com/uc?id=${e.url}`}
               alt=""
             />
           );
@@ -27,7 +27,7 @@ const Project = (props) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:5000/portfolio");
+  const res = await fetch("https://jsonplaceholder.typicode.com/photos");
   const data = await res.json();
 
   return {
