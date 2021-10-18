@@ -16,7 +16,8 @@ const Project = (props) => {
               style={{ objectFit: "contain" }}
               width={200}
               height={200}
-              src={`https://docs.google.com/uc?id=${e.url}`}
+              // src={`https://docs.google.com/uc?id=${e.img_id}`}
+              src={e.url}
               alt=""
             />
           );
