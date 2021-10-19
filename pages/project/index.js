@@ -6,18 +6,18 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Row, Col, Divider } from "antd";
 
-const Project = ({ data }) => {
-  // const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   axios
-  //     .get("https://app.ferdyfian.xyz/portfolio")
-  //     .then((res) => {
-  //       setData(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
+const Project = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://app.ferdyfian.xyz/portfolio")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   // const getData = () => {};
 
   console.log(data);
@@ -63,15 +63,15 @@ const Project = ({ data }) => {
   );
 };
 
-export async function getStaticProps() {
-  const res = await fetch("https://app.ferdyfian.xyz/portfolio");
-  const data = await res.json();
+// export async function getServerSideProps() {
+//   const res = await fetch("https://app.ferdyfian.xyz/portfolio");
+//   const data = await res.json();
 
-  return {
-    props: {
-      data,
-    }, // will be passed to the page component as props
-  };
-}
+//   return {
+//     props: {
+//       projectData: data,
+//     }, // will be passed to the page component as props
+//   };
+// }
 
 export default Project;
