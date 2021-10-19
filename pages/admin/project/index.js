@@ -1,8 +1,10 @@
 import Layout from "../../../components/layout admin";
-import { Image } from "antd";
+import style from "./project.module.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Row, Col, Divider } from "antd";
 
 const Project = () => {
   const [data, setData] = useState([]);
@@ -21,29 +23,29 @@ const Project = () => {
   console.log(data);
   return (
     <Layout>
-      <div className="">
-        <h3>Project</h3>
-        {data.map((e) => {
-          return (
-            // <Image
-            //   key={e.id}
-            //   style={{ objectFit: "contain" }}
-            //   width={200}
-            //   height={200}
-            //   src={`https://docs.google.com/uc?id=${e.img_id}`}
-            //   alt=""
-            // />
-            <LazyLoadImage
-              key={e.id}
-              style={{ objectFit: "contain" }}
-              alt=""
-              height={350}
-              src={`https://docs.google.com/uc?id=${e.img_id}`} // use normal <img> attributes as props
-              width={350}
-              effect="blur"
-            />
-          );
-        })}
+      <div className={style.container}>
+        <Divider orientation="left">Project</Divider>
+        <Row justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+          {data.map((e) => {
+            return (
+              <Col key={e.id} className="gutter-row">
+                <LazyLoadImage
+                  className={style.image}
+                  style={{
+                    objectFit: "contain",
+                    maxHeight: "400px",
+                    width: "100%",
+                    maxWidth: "400px",
+                    height: "100vw",
+                  }}
+                  alt=""
+                  src={`https://docs.google.com/uc?id=${e.img_id}`} // use normal <img> attributes as props
+                  effect="blur"
+                />
+              </Col>
+            );
+          })}
+        </Row>
       </div>
     </Layout>
   );
