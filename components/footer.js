@@ -9,7 +9,9 @@ const Footer = () => {
     <div className="footer">
       <div className="top-footer">
         <div className="text">
-          <h2>Tertarik Bekerjasama dengan kami?</h2>
+          <h2 style={{ color: "rgba(255, 255, 255, 0.95)" }}>
+            Tertarik Bekerjasama dengan kami?
+          </h2>
           <p>
             Setiap project punya tantangan tersendiri, dan team Reenusa Studio
             sangat siap untuk hal tersebut. Mari berdiskusi dengan kami :)
