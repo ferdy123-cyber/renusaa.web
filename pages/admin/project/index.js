@@ -24,23 +24,35 @@ const Project = () => {
   return (
     <Layout>
       <div className={style.container}>
-        <Divider orientation="left">Project</Divider>
+        <Divider
+          style={{ fontSize: "20px", marginTop: "25px", marginBottom: "20px" }}
+          orientation="left"
+        >
+          Project
+        </Divider>
         <Row justify="space-around" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           {data.map((e) => {
             return (
-              <Col key={e.id} className="gutter-row">
+              <Col
+                key={e.id}
+                className="gutter-row"
+                style={{
+                  maxHeight: "420px",
+                  width: "100%",
+                  maxWidth: "420px",
+                  height: "100vw",
+                }}
+              >
                 <LazyLoadImage
                   className={style.image}
                   style={{
                     objectFit: "contain",
-                    maxHeight: "400px",
-                    width: "100%",
-                    maxWidth: "400px",
-                    height: "100vw",
                   }}
                   alt=""
                   src={`https://docs.google.com/uc?id=${e.img_id}`} // use normal <img> attributes as props
                   effect="blur"
+                  width="100%"
+                  height="100%"
                 />
               </Col>
             );

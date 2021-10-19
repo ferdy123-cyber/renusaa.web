@@ -68,7 +68,9 @@ a {
 }
 
 .notifImg {
-  margin-left: 18px;
+  margin-left: 15px;
+  width: 25px;
+  height: 25px;
 }
 
 .adminNavbar {
@@ -99,6 +101,11 @@ a {
   color: #53534dab;
 }
 
+.collapse-menu2 p {
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
 .nav-bar .navigation .collapse-menu button {
   background-color: rgb(241, 214, 125);
   width: 150px;
@@ -107,6 +114,7 @@ a {
   font-size: 13px;
   font-weight: 600;
   border-radius: 5px;
+  color: #41403c; 
 }
 
 .footer {
@@ -143,7 +151,8 @@ a {
   border: none;
   font-size: 16px;
   font-weight: 600;
-  border-radius: 5px; 
+  border-radius: 5px;
+  color: #41403c; 
 }
 
 .footer .bottom-footer{
@@ -312,6 +321,7 @@ a {
     align-items: center;
     margin-top: -10px;
     margin-bottom: 20px;
+    margin-left: 15px;
   }
 
   .hamburger-menu2 button {
