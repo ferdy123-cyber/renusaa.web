@@ -6,10 +6,11 @@ import projectImg from "../../public/Image/8362.jpg";
 import testiImg from "../../public/Image/4380.jpg";
 import orderImg from "../../public/Image/4818.jpg";
 import Image from "next/image";
+import { authPage } from "../../protectedRoute";
 
 const { Meta } = Card;
 
-const Dashboard = () => {
+const Dashboard = ({ token }) => {
   return (
     <Layout>
       <div className={style.container}>
@@ -27,8 +28,8 @@ const Dashboard = () => {
               <Image
                 alt="example"
                 src={projectImg}
-                width={460}
-                height={400}
+                width={760}
+                height={700}
                 placeholder="blur"
               />
             }
@@ -49,8 +50,8 @@ const Dashboard = () => {
             <Image
               alt="example"
               src={testiImg}
-              width={460}
-              height={400}
+              width={760}
+              height={700}
               placeholder="blur"
             />
           }
@@ -70,8 +71,8 @@ const Dashboard = () => {
             <Image
               alt="example"
               src={orderImg}
-              width={460}
-              height={400}
+              width={760}
+              height={700}
               placeholder="blur"
             />
           }
@@ -79,24 +80,17 @@ const Dashboard = () => {
           <Meta title="PESANAN" description="23" />
         </Card>
       </div>
-
-      {/* <p className={style.p}>DASHBOARD</p>
-      <div className={style.container}>
-        <Link href="/admin/project">
-          <div className={style.dashboardMenu}>
-            <p>PROJECT ANDA</p>
-            <div>12</div>
-          </div>
-        </Link>
-        <div className={style.dashboardMenu}>
-          <p>DAFTAR TESTIMONI</p>
-        </div>
-        <div className={style.dashboardMenu}>
-          <p>PESANAN</p>
-        </div>
-      </div> */}
     </Layout>
   );
 };
+
+export async function getServerSideProps(ctx) {
+  const token = await authPage(ctx);
+  return {
+    props: {
+      token,
+    },
+  };
+}
 
 export default Dashboard;

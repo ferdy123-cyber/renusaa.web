@@ -6,7 +6,6 @@ import Link from "next/link";
 
 const Navbar = () => {
   const [openNav, setOpenNav] = useState(false);
-  console.log(openNav);
   const setNav = () => {
     if (openNav === false) {
       setOpenNav(true);

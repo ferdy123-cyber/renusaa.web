@@ -1,89 +1,135 @@
-import { LockClosedIcon } from "@heroicons/react/solid";
-import brandLogo from "../../../public/Image/REENUSA LOGO HITAM-05.png";
+import { Form, Input, Button, Alert, message } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import Image from "next/image";
+import logo from "../../../public/Image/REENUSA LOGO HITAM-05.png";
 import style from "./login.module.css";
-import "tailwindcss/tailwind.css";
+import axios from "axios";
+import { useState } from "react";
+import Cookies from "js-cookie";
+import Router from "next/router";
+import { unAuthPage } from "../../../protectedRoute";
 
-const LoginAdmin = () => {
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [alert, setAlert] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const onClose = (e) => {
+    console.log(e, "I was closed.");
+  };
+
+  const onFinish = (values) => {
+    setLoading(true);
+    const data = {
+      email: values.email,
+      password: values.password,
+    };
+    axios
+      .post("https://app.ferdyfian.xyz/login", data)
+      .then((res) => {
+        console.log(res.data.data);
+        setAlert(false);
+        setLoading(false);
+        message.success("Login berhasil");
+        Cookies.set("token", res.data.data.token);
+        Router.push("/admin");
+      })
+      .catch((error) => {
+        setAlert(true);
+        if (error.response && error.response.data) {
+          console.log(error.response.data.error);
+          setError(error.response.data.error);
+        } else {
+          console.log(error.message);
+          setError(error.message);
+        }
+        setLoading(false);
+      });
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <div className={`${style.img} mx-auto h-15 w-auto`}>
-            <Image src={brandLogo} width={50} height={70} alt="" />
-          </div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Login ke akun kamu
-          </h2>
-        </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
-          <input type="hidden" name="remember" defaultValue="true" />
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-              />
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
-              <label
-                htmlFor="remember-me"
-                className="ml-2 block text-sm text-gray-900"
-              >
-                Ingat saya
-              </label>
-            </div>
-
-            <div className="text-sm">
-              <a href="#" className="font-medium">
-                Lupa password?
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <button
-              type="submit"
-              className={`${style.submitBtn} group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white`}
-            >
-              Login
-            </button>
-          </div>
-        </form>
+    <Form
+      name="normal_login"
+      className="login-form"
+      initialValues={{ remember: true }}
+      onFinish={onFinish}
+      style={{
+        width: "92%",
+        maxWidth: "550px",
+        margin: "auto",
+        marginTop: "100px",
+      }}
+    >
+      <div className={style.loginField}>
+        <Image
+          src={logo}
+          width={150}
+          height={150}
+          objectFit="contain"
+          placeholder="blur"
+        />
+        <p>Login ke akun kamu</p>
       </div>
-    </div>
+      <Form.Item
+        name="email"
+        rules={[{ required: true, message: "Please input your Username!" }]}
+      >
+        <Input
+          prefix={<UserOutlined className="site-form-item-icon" />}
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </Form.Item>
+      <Form.Item
+        name="password"
+        rules={[{ required: true, message: "Please input your Password!" }]}
+      >
+        <Input
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </Form.Item>
+
+      <Form.Item>
+        <Button
+          type="primary"
+          htmlType="submit"
+          className="login-form-button warning"
+          style={{
+            backgroundColor: "#5d5c55",
+            color: "white",
+            border: "solid 1px #5d5c55",
+            marginTop: "15px",
+          }}
+        >
+          {loading ? "Loading..." : "Log in"}
+        </Button>
+      </Form.Item>
+      {alert === true && (
+        <Alert
+          message="Login gagal"
+          description={error}
+          type="error"
+          closable
+          onClose={onClose}
+        />
+      )}
+    </Form>
   );
 };
 
-export default LoginAdmin;
+export async function getServerSideProps(ctx) {
+  await unAuthPage(ctx);
+  return {
+    props: {},
+  };
+}
+
+export default Login;
