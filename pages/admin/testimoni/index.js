@@ -3,8 +3,6 @@ import style from "./testimoni.module.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import MobileUi from "../../../components/mobileUi";
 import {
-  Row,
-  Col,
   Divider,
   Button,
   Modal,
@@ -215,7 +213,7 @@ const Testimoni = ({ token }) => {
         {loading === false && (
           <div className="map">
             {data.map((e) => (
-              <div className={style.data}>
+              <div className={style.data} key={e.id}>
                 <div className={style.div1}>
                   <LazyLoadImage
                     style={{
