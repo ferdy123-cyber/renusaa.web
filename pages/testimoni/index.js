@@ -22,7 +22,7 @@ import axios from "axios";
 
 const { TextArea } = Input;
 
-const Testimoni = ({ token }) => {
+const Testimoni = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -47,7 +47,6 @@ const Testimoni = ({ token }) => {
       })
       .catch((error) => {
         message.error("Gagal memproses data");
-        // Router.push("/admin/login");
       });
   };
   useEffect(() => {
@@ -111,14 +110,5 @@ const Testimoni = ({ token }) => {
     </Layout>
   );
 };
-
-export async function getServerSideProps(ctx) {
-  const token = await authPage(ctx);
-  return {
-    props: {
-      token,
-    },
-  };
-}
 
 export default Testimoni;
