@@ -21,10 +21,11 @@ const Project = () => {
       .catch((error) => {
         if (error.response && error.response.data) {
           console.log(error.response.data.error);
-          message.error(error.response.data.error);
+          message.error("Ada masalah saat menampilkan data");
         } else {
           console.log(error.message);
           message.error(error.message);
+          message.error("Ada masalah saat menampilkan data");
         }
         setLoading(false);
       });

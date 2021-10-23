@@ -30,10 +30,6 @@ const Project = ({ token }) => {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
   const handleCancel = () => {
     setIsModalVisible(false);
   };
@@ -51,11 +47,7 @@ const Project = ({ token }) => {
       })
       .catch((error) => {
         Router.push("/admin/login");
-        if (error.response && error.response.data) {
-          message.error(error.response.data);
-        } else {
-          message.error(error.message);
-        }
+        message.error("Sesi anda telah habis");
         Cookies.remove("token");
         setLoading(false);
       });
@@ -77,12 +69,14 @@ const Project = ({ token }) => {
       })
       .catch((error) => {
         Router.push("/admin/login");
-        if (error.response && error.response.data) {
-          message.error(error.response.data);
-        } else {
-          message.error(error.message);
-        }
+        message.error(`Sesi anda telah habis`);
         Cookies.remove("token");
+        if (error.response && error.response.data) {
+          console.log(error.response.data.error);
+        } else {
+          console.log(error.message);
+        }
+        console.log(error.message.data);
         setLoading(false);
       });
   }
@@ -177,15 +171,20 @@ const Project = ({ token }) => {
                     className="gutter-row"
                     style={{
                       maxHeight: "420px",
-                      width: "90%",
+                      width: "95%",
                       maxWidth: "420px",
                       height: "100vw",
                       position: "relative",
+                      border: id === e.id ? "2px solid #ff4d4f" : "",
+                      borderRadius: "8px",
+                      marginBottom: "5px",
+                      paddingBottom: "10px",
                     }}
-                    onMouseEnter={() => setId(e.id)}
-                    onMouseLeave={() => setId(null)}
                   >
                     <LazyLoadImage
+                      onClick={
+                        id === e.id ? () => setId(null) : () => setId(e.id)
+                      }
                       className={style.image}
                       style={{
                         objectFit: "contain",
@@ -218,7 +217,7 @@ const Project = ({ token }) => {
         </div>
       )}
       <Button
-        style={{ position: "fixed", bottom: "40px", right: "2vw" }}
+        style={{ position: "fixed", bottom: "5vh", right: "2vw" }}
         type="primary"
         shape="round"
         value="ok"

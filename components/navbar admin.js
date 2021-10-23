@@ -31,7 +31,9 @@ const Navbar = () => {
           <Link href="/admin/project">
             <p>LIST PROJECT</p>
           </Link>
-          <p>LIST TESTIMONI</p>
+          <Link href="/admin/testimoni">
+            <p>LIST TESTIMONI</p>
+          </Link>
           <p>LOGOUT</p>
           <div className="notifImg">
             <Image src={notifImage} width={26} height={26} alt="" />

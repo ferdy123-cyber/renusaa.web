@@ -187,6 +187,62 @@ a {
   cursor: pointer;
 }
 
+.mobile {
+  width: 90%;
+  max-width: 290px;
+  position: relative;
+  background-color: #41403c;
+  transition: 0.5s ease;
+  margin: auto;
+  border-radius: 40px;
+}
+
+.topBezel {
+  position: absolute;
+  background-color: #41403c;
+  top: 10px;
+  height: 20px;
+  width: 80px;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.bottomBezel {
+  position: absolute;
+  background-color: #41403c;
+  bottom: -20px;
+  height: 20px;
+  width: 100%; 
+}
+
+.dlc1 {
+  width: 20px;
+  height: 10px;
+  background-color: transparent;
+  position: absolute;
+  left: -15px;
+  top: -5px;
+  border-top: 5px #41403c solid;
+  border-right: 5px #41403c solid;
+  border-top-right-radius: 10px;
+}
+
+.dlc2 {
+  width: 20px;
+  height: 10px;
+  background-color: transparent;
+  position: absolute;
+  right: -15px;
+  top: -5px;
+  border-top: 5px #41403c solid;
+  border-left: 5px #41403c solid;
+  border-top-left-radius: 10px;
+}
+
 
 @media (max-width: 1100px) {
   .nav-bar .brand {
