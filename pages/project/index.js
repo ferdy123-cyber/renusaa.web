@@ -13,7 +13,7 @@ const Project = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://app.ferdyfian.xyz/portfolio")
+      .get("http://localhost:5000/portfolio")
       .then((res) => {
         setData(res.data);
         setLoading(false);

@@ -71,12 +71,14 @@ export default function Home() {
           </a>
         </div>
         <div className={style.toTestimoni}>
-          <p>
-            Cek Testimoni{" "}
-            <span>
-              <Image src={right} width={14} height={14} alt="" />
-            </span>
-          </p>
+          <Link href="/testimoni">
+            <p>
+              Cek Testimoni{" "}
+              <span>
+                <Image src={right} width={14} height={14} alt="" />
+              </span>
+            </p>
+          </Link>
         </div>
       </div>
     </Layout>

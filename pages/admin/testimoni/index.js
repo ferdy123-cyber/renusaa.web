@@ -23,6 +23,7 @@ import axios from "axios";
 const { TextArea } = Input;
 
 const Testimoni = ({ token }) => {
+  console.log(token);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -37,10 +38,43 @@ const Testimoni = ({ token }) => {
     setIsModalVisible(false);
   };
 
+  function confirm(id) {
+    message.loading("Loading...");
+    axios
+      .delete(`http://localhost:5000/testimoni/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        getData();
+        message.destroy();
+        message.success("File telah dihapus");
+      })
+      .catch((error) => {
+        Router.push("/admin/login");
+        message.error(`Sesi anda telah habis`);
+        Cookies.remove("token");
+        if (error.response && error.response.data) {
+          console.log(error.response.data.error);
+        } else {
+          console.log(error.message);
+        }
+        console.log(error.message.data);
+        setLoading(false);
+      });
+  }
+
+  function cancel(e) {
+    console.log(e);
+    message.error("Dibatalkan");
+  }
+
   const getData = () => {
     setLoading(true);
     axios
-      .get("https://app.ferdyfian.xyz/testimoni/admin", {
+      .get("http://localhost:5000/testimoni/admin", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,14 +84,15 @@ const Testimoni = ({ token }) => {
         setLoading(false);
       })
       .catch((error) => {
-        // Router.push("/admin/login");
+        Router.push("/admin/login");
+        message.error("Sesi telah habis");
         if (error.response && error.response.data) {
-          message.error(error.response.data);
+          console.log(error.response.data);
         } else {
-          message.error(error.message);
+          console.log(error.message);
         }
-        // Cookies.remove("token");
-        // setLoading(false);
+        Cookies.remove("token");
+        setLoading(false);
       });
   };
   useEffect(() => {
@@ -72,9 +107,6 @@ const Testimoni = ({ token }) => {
     const [text, setText] = useState(null);
     const props = {
       onRemove: () => {
-        // const index = logoImg.indexOf(file);
-        // const newFileList = logoImg.slice();
-        // newFileList.splice(index, 1);
         setLogoImg(null);
       },
       beforeUpload: (file) => {
@@ -101,7 +133,7 @@ const Testimoni = ({ token }) => {
     const description = (id) => {
       axios
         .patch(
-          `https://app.ferdyfian.xyz/testimoni/${id}`,
+          `http://localhost:5000/testimoni/${id}`,
           { description: text },
           {
             headers: {
@@ -129,13 +161,14 @@ const Testimoni = ({ token }) => {
       console.log(data);
       setUploading(true);
       axios
-        .post(`https://app.ferdyfian.xyz/testimoni/add`, data, {
+        .post(`http://localhost:5000/testimoni/add`, data, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
           },
         })
         .then((response) => {
+          console.log(response.data.data);
           description(response.data.data.id);
         })
         .catch((error) => {
@@ -191,7 +224,7 @@ const Testimoni = ({ token }) => {
           Testimoni
         </Divider>
         <Button
-          style={{ position: "fixed", bottom: "40px", right: "2vw" }}
+          style={{ position: "fixed", bottom: "40px", right: "2vw", zIndex: 4 }}
           type="primary"
           shape="round"
           value="ok"
@@ -213,9 +246,20 @@ const Testimoni = ({ token }) => {
         {loading === false && (
           <div className="map">
             {data.map((e) => (
-              <div className={style.data} key={e.id}>
+              <div
+                className={style.data}
+                style={
+                  id === e.id
+                    ? { borderColor: "#ff4d4f" }
+                    : { borderColor: "transparent" }
+                }
+                key={e.id}
+              >
                 <div className={style.div1}>
                   <LazyLoadImage
+                    onClick={
+                      id === e.id ? () => setId(null) : () => setId(e.id)
+                    }
                     style={{
                       width: "80%",
                       maxWidth: "200px",
@@ -234,6 +278,9 @@ const Testimoni = ({ token }) => {
                   <MobileUi show={show}>
                     <div className={style.testimoniSS}>
                       <LazyLoadImage
+                        onClick={
+                          id === e.id ? () => setId(null) : () => setId(e.id)
+                        }
                         style={{ maxWidth: 270 }}
                         afterLoad={() => setShow(true)}
                         beforeLoad={() => setShow(false)}
@@ -246,6 +293,20 @@ const Testimoni = ({ token }) => {
                     </div>
                   </MobileUi>
                 </div>
+                {id === e.id && (
+                  <Popconfirm
+                    className={style.delBtn}
+                    title="Hapus file ini? anda tidak dapat memulihkannya"
+                    onConfirm={() => confirm(e.id)}
+                    onCancel={cancel}
+                    okText="Ya"
+                    cancelText="Tidak"
+                  >
+                    <Button type="primary" shape="round" danger>
+                      Hapus
+                    </Button>
+                  </Popconfirm>
+                )}
               </div>
             ))}
           </div>

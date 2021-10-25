@@ -37,27 +37,29 @@ const Dashboard = ({ token }) => {
             <Meta title="PROJECT ANDA" description="1" />
           </Card>
         </Link>
-        <Card
-          hoverable
-          style={{
-            width: "98%",
-            maxWidth: 460,
-            marginRight: "1%",
-            marginBottom: 10,
-            marginLeft: "1%",
-          }}
-          cover={
-            <Image
-              alt="example"
-              src={testiImg}
-              width={760}
-              height={700}
-              placeholder="blur"
-            />
-          }
-        >
-          <Meta title="DAFTAR TESTIMONI" description="12" />
-        </Card>
+        <Link href="/admin/testimoni">
+          <Card
+            hoverable
+            style={{
+              width: "98%",
+              maxWidth: 460,
+              marginRight: "1%",
+              marginBottom: 10,
+              marginLeft: "1%",
+            }}
+            cover={
+              <Image
+                alt="example"
+                src={testiImg}
+                width={760}
+                height={700}
+                placeholder="blur"
+              />
+            }
+          >
+            <Meta title="DAFTAR TESTIMONI" description="12" />
+          </Card>
+        </Link>
         <Card
           hoverable
           style={{

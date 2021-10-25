@@ -1,0 +1,28 @@
+.container {
+    width: 97%;
+    max-width: 1300px;
+    margin: auto;
+    padding-bottom: 50px;
+    margin-top: 20px;
+}
+
+.section {
+    color: rgb(37, 36, 36);
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
+
+.section h1 {
+    font-weight: 700;
+}
+
+.section h2 {
+    font-weight: 600;
+}
+
+.section ul li, .section p {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: justify;
+}

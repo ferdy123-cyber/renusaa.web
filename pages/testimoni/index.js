@@ -2,45 +2,19 @@ import Layout from "../../components/layout";
 import style from "./testimoni.module.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import MobileUi from "../../components/mobileUi";
-import {
-  Divider,
-  Button,
-  Modal,
-  message,
-  Space,
-  Upload,
-  Popconfirm,
-  Input,
-} from "antd";
+import { Divider, message, Input } from "antd";
 import { useState, useEffect } from "react";
-import { authPage } from "../../protectedRoute/index";
-import Router from "next/router";
-import Cookies from "js-cookie";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { UploadOutlined, LoadingOutlined } from "@ant-design/icons";
 import axios from "axios";
-
-const { TextArea } = Input;
 
 const Testimoni = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [id, setId] = useState(null);
   const [show, setShow] = useState(false);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
   const getData = () => {
     setLoading(true);
     axios
-      .get("https://app.ferdyfian.xyz/testimoni")
+      .get("http://localhost:5000/testimoni")
       .then((res) => {
         setData(res.data.data);
         setLoading(false);

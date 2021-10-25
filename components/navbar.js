@@ -30,8 +30,13 @@ const Navbar = () => {
           <Link href="/project">
             <p>PORTFOLIO</p>
           </Link>
-          <p>TESTIMONI CLIENT</p>
-          <p>SYARAT & KETENTUAN</p>
+          <Link href="/testimoni">
+            <p>TESTIMONI CLIENT</p>
+          </Link>
+          <Link href="/terms-and-condition">
+            <p>SYARAT & KETENTUAN</p>
+          </Link>
+
           <a
             href="https://api.whatsapp.com/send/?phone=6282320189591&text=Hai"
             target="_blank"
