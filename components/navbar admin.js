@@ -39,7 +39,7 @@ const Navbar = () => {
     };
     message.loading("Loading");
     axios
-      .patch(`http://localhost:5000/reset`, data, {
+      .patch(`https://app.ferdyfian.xyz/reset`, data, {
         headers: {
           Authorization: `Bearer ${Cookies.get("token")}`,
         },

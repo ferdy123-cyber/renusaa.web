@@ -27,7 +27,7 @@ const Login = () => {
       password: values.password,
     };
     axios
-      .post("http://localhost:5000/login", data)
+      .post("https://app.ferdyfian.xyz/login", data)
       .then((res) => {
         console.log(res.data.data);
         setAlert(false);

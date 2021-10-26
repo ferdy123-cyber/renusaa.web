@@ -1,16 +1,60 @@
 import Layout from "../../components/layout admin";
 import style from "./admin.module.css";
 import Link from "next/link";
-import { Card } from "antd";
+import { Card, message } from "antd";
 import projectImg from "../../public/Image/8362.jpg";
 import testiImg from "../../public/Image/4380.jpg";
 import orderImg from "../../public/Image/4818.jpg";
 import Image from "next/image";
 import { authPage } from "../../protectedRoute";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Router from "next/router";
+import Cookies from "js-cookie";
 const { Meta } = Card;
 
 const Dashboard = ({ token }) => {
+  const [projectLength, setProjectLength] = useState(0);
+  const [testiLength, setTestiLength] = useState(0);
+  const getProject = () => {
+    axios
+      .get("https://app.ferdyfian.xyz/portfolio/admin", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setProjectLength(res.data.length);
+      })
+      .catch((error) => {
+        Router.push("/admin/login");
+        message.error("Sesi anda telah habis");
+        Cookies.remove("token");
+      });
+  };
+
+  const getTestimoni = () => {
+    axios
+      .get("https://app.ferdyfian.xyz/testimoni/admin", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setTestiLength(res.data.length);
+      })
+      .catch((error) => {
+        Router.push("/admin/login");
+        message.error("Sesi anda telah habis");
+        Cookies.remove("token");
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getProject();
+    getTestimoni();
+  }, []);
   return (
     <Layout>
       <div className={style.container}>
@@ -34,7 +78,7 @@ const Dashboard = ({ token }) => {
               />
             }
           >
-            <Meta title="PROJECT ANDA" description="1" />
+            <Meta title="PROJECT ANDA" description={projectLength} />
           </Card>
         </Link>
         <Link href="/admin/testimoni">
@@ -57,7 +101,7 @@ const Dashboard = ({ token }) => {
               />
             }
           >
-            <Meta title="DAFTAR TESTIMONI" description="12" />
+            <Meta title="DAFTAR TESTIMONI" description={testiLength} />
           </Card>
         </Link>
         <Card

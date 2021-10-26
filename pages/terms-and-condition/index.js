@@ -1,5 +1,5 @@
 import Layout from "../../components/layout";
-import { Divider, message, Input } from "antd";
+import { Divider } from "antd";
 import style from "./terms.module.css";
 
 const Terms = () => {

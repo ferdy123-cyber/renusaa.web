@@ -41,7 +41,7 @@ const Testimoni = ({ token }) => {
   function confirm(id) {
     message.loading("Loading...");
     axios
-      .delete(`http://localhost:5000/testimoni/${id}`, {
+      .delete(`https://app.ferdyfian.xyz/testimoni/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -74,7 +74,7 @@ const Testimoni = ({ token }) => {
   const getData = () => {
     setLoading(true);
     axios
-      .get("http://localhost:5000/testimoni/admin", {
+      .get("https://app.ferdyfian.xyz/testimoni/admin", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -133,7 +133,7 @@ const Testimoni = ({ token }) => {
     const description = (id) => {
       axios
         .patch(
-          `http://localhost:5000/testimoni/${id}`,
+          `https://app.ferdyfian.xyz/testimoni/${id}`,
           { description: text },
           {
             headers: {
@@ -161,7 +161,7 @@ const Testimoni = ({ token }) => {
       console.log(data);
       setUploading(true);
       axios
-        .post(`http://localhost:5000/testimoni/add`, data, {
+        .post(`https://app.ferdyfian.xyz/testimoni/add`, data, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,

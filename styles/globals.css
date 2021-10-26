@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,700&display=swap");
 
 html,
 body {
   padding: 0;
   margin: 0;
-  
 }
 
 button {
@@ -18,7 +17,7 @@ a {
 
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .root {
@@ -40,7 +39,6 @@ a {
   height: 130px;
   transition: 0.4s ease;
 }
-
 
 .nav-bar .brand {
   display: flex;
@@ -81,11 +79,13 @@ a {
   width: calc(100% - 400px);
 }
 
-.hamburger-menu, .hamburger-menu2 {
+.hamburger-menu,
+.hamburger-menu2 {
   display: none;
 }
 
-.collapse-menu, .collapse-menu2 {
+.collapse-menu,
+.collapse-menu2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -114,7 +114,7 @@ a {
   font-size: 13px;
   font-weight: 600;
   border-radius: 5px;
-  color: #41403c; 
+  color: #41403c;
 }
 
 .footer {
@@ -152,10 +152,10 @@ a {
   font-size: 16px;
   font-weight: 600;
   border-radius: 5px;
-  color: #41403c; 
+  color: #41403c;
 }
 
-.footer .bottom-footer{
+.footer .bottom-footer {
   padding-top: 70px;
   padding-bottom: 60px;
   display: flex;
@@ -216,7 +216,7 @@ a {
   background-color: #41403c;
   bottom: -20px;
   height: 20px;
-  width: 100%; 
+  width: 100%;
 }
 
 .dlc1 {
@@ -243,18 +243,16 @@ a {
   border-top-left-radius: 10px;
 }
 
-
 @media (max-width: 1100px) {
   .nav-bar .brand {
     width: 70%;
     max-width: 280px;
   }
-  
 
   .adminNavbar {
     width: calc(100% - 450px);
   }
-  
+
   .userNavbar {
     width: calc(100% - 310px);
   }
@@ -277,7 +275,7 @@ a {
   .activeNav2 {
     height: 260px;
   }
-  
+
   .nav-bar .navigation {
     display: block;
     width: calc(100% - 210px);
@@ -341,7 +339,7 @@ a {
     text-align: center;
     padding-bottom: 10px;
   }
-  
+
   .footer .top-footer .btn {
     display: flex;
     justify-content: center;
@@ -349,7 +347,6 @@ a {
     width: 90%;
     margin: 0px auto;
   }
-
 }
 
 @media (max-width: 680px) {
@@ -415,4 +412,142 @@ a {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.274);
+}
+
+.container-pricing {
+  width: 97%;
+  max-width: 1300px;
+  margin: auto;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+.conten-pricing {
+  width: 97%;
+  max-width: 1300px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 30px;
+}
+
+.pricing-table {
+  background: #f1f1f1;
+  flex: 1;
+  margin: 10px;
+  text-transform: uppercase;
+}
+
+.pricing-header {
+  color: #fff;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.price span {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.title {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 80%;
+  max-width: 360px;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.pricing-list {
+  padding: 10px 20px;
+}
+
+.pricing-list li {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #344;
+  text-align: center;
+  text-decoration: none;
+  list-style: none;
+}
+
+.border {
+  width: 80px;
+  height: 1px;
+  background: #ddd;
+  margin: auto;
+}
+
+.pricing-table a {
+  display: block;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+  border: 1px solid;
+  max-width: 360px;
+  transition: 0.2s linear;
+}
+.pricing-table a:hover {
+  border-radius: 30px;
+}
+.Starter .pricing-header {
+  background: #2980b9;
+}
+.Profesional .pricing-header {
+  background: #2c3e50;
+}
+.Enterprise .pricing-header {
+  background: #c0392b;
+}
+
+.Starter .title {
+  background-image: linear-gradient(125deg, #3498db, #9b59b6);
+}
+.Profesional .title {
+  background-image: linear-gradient(125deg, #34495e, #95a5a6);
+}
+.Enterprise .title {
+  background-image: linear-gradient(125deg, #e74c3c, #f39c12);
+}
+
+.Starter a {
+  color: #2980b9;
+}
+.Profesional a {
+  color: #2c3e50;
+}
+.Enterprise a {
+  color: #c0392b;
+}
+
+.Starter a:hover {
+  background: #2980b9;
+  color: #fff;
+}
+.Profesional a:hover {
+  background: #2c3e50;
+  color: #fff;
+}
+.Enterprise a:hover {
+  background: #c0392b;
+  color: #fff;
+}
+
+@media screen and (max-width: 780px) {
+  .pricing-table {
+    flex: 100%;
+  }
 }
