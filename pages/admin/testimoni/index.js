@@ -97,7 +97,7 @@ const Testimoni = ({ token }) => {
   };
   useEffect(() => {
     getData();
-  }, [getData]);
+  }, []);
   console.log(data);
 
   const AddProject = () => {

@@ -54,7 +54,7 @@ const Dashboard = ({ token }) => {
   useEffect(() => {
     getProject();
     getTestimoni();
-  }, [getProject, getTestimoni]);
+  }, []);
   return (
     <Layout>
       <div className={style.container}>
