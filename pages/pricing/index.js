@@ -1,3 +1,9 @@
+const Pricing = () => {
+  return <div>hallo</div>;
+};
+
+export default Pricing;
+
 // import Layout from "../../components/layout";
 // import { Divider, message, Input, Card } from "antd";
 // const Pricing = () => {
