@@ -126,7 +126,7 @@ const Project = ({ token }) => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
   // const getData = () => {};
 
   console.log(data);

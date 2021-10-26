@@ -69,6 +69,7 @@ const Login = () => {
           height={150}
           objectFit="contain"
           placeholder="blur"
+          alt=""
         />
         <p>Login ke akun kamu</p>
       </div>
