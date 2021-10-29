@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-import brandLogo from "../public/Image/REENUSA LOGO HITAM-03.png";
+import brandLogo from "../public/Image/REENUSA LOGO PUTIH-04.png";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -17,7 +17,13 @@ const Navbar = () => {
     <div className={`nav-bar ${openNav === true ? "activeNav" : ""}`}>
       <div className="brand">
         <Link href="/">
-          <Image src={brandLogo} width={300} height={100} alt="brand-logo" />
+          <Image
+            src={brandLogo}
+            layout="fill"
+            alt="brand-logo"
+            className="brandImg"
+            objectFit="contain"
+          />
         </Link>
       </div>
       <div className="navigation userNavbar">
