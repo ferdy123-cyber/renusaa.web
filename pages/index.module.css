@@ -144,6 +144,7 @@
 .imgHeader {
   object-fit: cover;
   object-position: bottom 70%;
+  background: #41403c;
 }
 
 .slogan {
@@ -169,7 +170,6 @@
   font-weight: 500;
   color: rgb(100, 92, 92);
   line-height: 50px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .slogan p {
@@ -204,7 +204,6 @@
 }
 
 .why_us h1 {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 35px;
   font-weight: 300;
 }
@@ -212,7 +211,6 @@
 .why_us p {
   font-size: 20px;
   font-weight: 100;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .what_we_offer {
@@ -225,7 +223,6 @@
 }
 
 .what_we_offer h1 {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 35px;
   font-weight: 300;
 }
@@ -233,7 +230,6 @@
 .what_we_offer p {
   font-size: 20px;
   font-weight: 100;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .project {
@@ -241,7 +237,6 @@
 }
 
 .project h1 {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 35px;
   font-weight: 300;
   margin-bottom: 50px;
