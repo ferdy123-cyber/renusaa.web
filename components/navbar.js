@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import brandLogo from "../public/Image/REENUSA LOGO PUTIH-04.png";
 import Link from "next/link";
 import { PauseOutlined } from "@ant-design/icons";
 
 const Navbar = () => {
   const [openNav, setOpenNav] = useState(false);
-  console.log(openNav);
+  const [scroll, setScroll] = useState(false);
   const setNav = () => {
     if (openNav === false) {
       setOpenNav(true);
@@ -14,8 +14,26 @@ const Navbar = () => {
       setOpenNav(false);
     }
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      const scrollHeight = window.pageYOffset;
+      const viewHeight = document.documentElement.clientHeight;
+      if (scrollHeight > viewHeight) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    });
+  });
+
+  console.log(scroll);
   return (
-    <div className={`nav-bar ${openNav === true ? "activeNav" : ""}`}>
+    <div
+      className={`nav-bar ${openNav === true ? "activeNav" : ""} ${
+        scroll ? "setBg" : ""
+      }`}
+    >
       <div className="brand">
         <Link href="/">
           <Image
