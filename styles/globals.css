@@ -47,8 +47,13 @@ a {
   border-radius: 10px;
 }
 
+/* .activeBg {
+  background-color: rgba(245, 245, 245, 1);
+} */
+
 .setBg {
   background-color: rgba(10, 14, 34, 0.527);
+  box-shadow: 0px 0px 5px #050505;
 }
 
 .nav-bar .brand {
@@ -291,7 +296,34 @@ a {
   }
 
   .activeNav {
-    height: 310px;
+    height: 325px;
+    background-color: rgba(245, 245, 245, 1);
+    box-shadow: 0px 0px 10px #050505;
+  }
+
+  .activeBg {
+    background-color: rgb(16, 21, 44);
+    box-shadow: 0px 0px 5px #050505;
+  }
+
+  .activeNav .brandImg {
+    filter: invert(100%);
+    opacity: 0.6;
+  }
+
+  .activeBg .brandImg {
+    filter: none;
+    opacity: 1;
+  }
+
+  .activeNav .hamburger-menu {
+    color: #5d5c55;
+    filter: none;
+  }
+
+  .activeBg .hamburger-menu {
+    color: #efeee9;
+    filter: none;
   }
 
   .activeNav2 {
@@ -317,9 +349,13 @@ a {
     position: absolute;
     right: 0;
     top: 70px;
-    background-color: rgba(245, 245, 245, 0.815);
+    background-color: rgba(245, 245, 245, 1);
     border-radius: 5px;
     text-align: center;
+  }
+
+  .activeBg .collapse-menu {
+    background-color: rgb(16, 21, 44);
   }
 
   .collapse-menu button {
@@ -332,6 +368,10 @@ a {
     font-size: 14px;
     font-weight: 500;
     text-shadow: none;
+  }
+
+  .activeBg .navigation p {
+    color: #efeee9;
   }
 
   .nav-bar .navigation p:hover {
@@ -348,7 +388,6 @@ a {
     width: max-content;
     font-size: 42px;
     transform: rotate(90deg);
-    filter: invert(100%);
     color: #efeee9;
     filter: drop-shadow(0px 0px 4px #050505);
     margin-right: 10px;

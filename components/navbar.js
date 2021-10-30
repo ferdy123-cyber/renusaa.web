@@ -32,7 +32,7 @@ const Navbar = () => {
     <div
       className={`nav-bar ${openNav === true ? "activeNav" : ""} ${
         scroll ? "setBg" : ""
-      }`}
+      } ${openNav && scroll ? "activeBg" : ""}`}
     >
       <div className="brand">
         <Link href="/">
