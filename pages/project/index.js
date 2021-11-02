@@ -106,25 +106,24 @@ const Project = () => {
         <Row justify="center" style={{ marginBottom: "30px" }}>
           {data.map((e) => {
             return (
-              <LazyLoadComponent>
-                <Col
-                  span={24}
-                  md={12}
-                  xl={8}
-                  xs={24}
-                  sm={12}
-                  lg={8}
-                  style={{ height: 320, position: "relative" }}
-                >
-                  <LazyLoadImage
-                    src={`https://docs.google.com/uc?id=${e.img_id}`}
-                    effect="blur"
-                    width="100%"
-                    height="100%"
-                    style={{ objectFit: "cover" }}
-                  />
-                </Col>
-              </LazyLoadComponent>
+              <Col
+                key={e.id}
+                span={24}
+                md={12}
+                xl={8}
+                xs={24}
+                sm={12}
+                lg={8}
+                style={{ height: 320, position: "relative" }}
+              >
+                <LazyLoadImage
+                  src={`https://docs.google.com/uc?id=${e.img_id}`}
+                  effect="blur"
+                  width="100%"
+                  height="100%"
+                  style={{ objectFit: "cover" }}
+                />
+              </Col>
             );
           })}
         </Row>
