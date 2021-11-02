@@ -36,7 +36,7 @@ const Project = ({ token }) => {
   const getData = () => {
     setLoading(true);
     axios
-      .get("https://app.ferdyfian.xyz/portfolio/admin", {
+      .get("http://localhost:5000/portfolio/admin", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -56,7 +56,7 @@ const Project = ({ token }) => {
   function confirm(id) {
     message.loading("Loading...");
     axios
-      .delete(`https://app.ferdyfian.xyz/portfolio/${id}`, {
+      .delete(`http://localhost:5000/portfolio/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -89,7 +89,7 @@ const Project = ({ token }) => {
   const AddProject = () => {
     const props = {
       name: "file",
-      action: "https://app.ferdyfian.xyz/portfolio/add",
+      action: "http://localhost:5000/portfolio/add",
       headers: {
         authorization: `Bearer ${token}`,
       },

@@ -14,7 +14,7 @@ const Testimoni = () => {
   const getData = () => {
     setLoading(true);
     axios
-      .get("https://app.ferdyfian.xyz/testimoni")
+      .get("http://localhost:5000/testimoni")
       .then((res) => {
         setData(res.data.data);
         setLoading(false);

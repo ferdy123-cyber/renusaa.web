@@ -14,11 +14,12 @@ import Cookies from "js-cookie";
 const { Meta } = Card;
 
 const Dashboard = ({ token }) => {
+  console.log(token);
   const [projectLength, setProjectLength] = useState(0);
   const [testiLength, setTestiLength] = useState(0);
   const getProject = () => {
     axios
-      .get("https://app.ferdyfian.xyz/portfolio/admin", {
+      .get("http://localhost:5000/portfolio/admin", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -35,7 +36,7 @@ const Dashboard = ({ token }) => {
 
   const getTestimoni = () => {
     axios
-      .get("https://app.ferdyfian.xyz/testimoni/admin", {
+      .get("http://localhost:5000/testimoni/admin", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

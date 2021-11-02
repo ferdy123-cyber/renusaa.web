@@ -1,4 +1,4 @@
-.container {
+/* .container {
     width: 97%;
     max-width: 1200px;
     margin: auto;
@@ -8,4 +8,23 @@
 
 .image {
     background-color: "black",
+} */
+
+.container {
+  margin: auto;
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 10px;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background-color: antiquewhite;
+}
+
+.imgHeader {
+  object-fit: cover;
+  object-position: bottom 70%;
+  background: #41403c;
 }

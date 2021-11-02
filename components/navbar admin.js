@@ -39,7 +39,7 @@ const Navbar = () => {
     };
     message.loading("Loading");
     axios
-      .patch(`https://app.ferdyfian.xyz/reset`, data, {
+      .patch(`http://localhost:5000/reset`, data, {
         headers: {
           Authorization: `Bearer ${Cookies.get("token")}`,
         },
@@ -104,10 +104,18 @@ const Navbar = () => {
     </Menu>
   );
   return (
-    <div className={`nav-bar ${openNav === true ? "activeNav2" : ""}`}>
+    <div
+      className={`nav-bar admLayout ${openNav === true ? "activeNav2" : ""}`}
+    >
       <div className="brand">
         <Link href="/admin">
-          <Image src={brandLogo} width={300} height={100} alt="brand-logo" />
+          <Image
+            src={brandLogo}
+            width={300}
+            height={100}
+            alt="brand-logo"
+            objectFit="contain"
+          />
         </Link>
       </div>
       <div className="navigation2 adminNavbar">

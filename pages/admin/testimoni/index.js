@@ -29,6 +29,7 @@ const Testimoni = ({ token }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [id, setId] = useState(null);
   const [show, setShow] = useState(false);
+  console.log(data);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -41,7 +42,7 @@ const Testimoni = ({ token }) => {
   function confirm(id) {
     message.loading("Loading...");
     axios
-      .delete(`https://app.ferdyfian.xyz/testimoni/${id}`, {
+      .delete(`http://localhost:5000/testimoni/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -74,7 +75,7 @@ const Testimoni = ({ token }) => {
   const getData = () => {
     setLoading(true);
     axios
-      .get("https://app.ferdyfian.xyz/testimoni/admin", {
+      .get("http://localhost:5000/testimoni/admin", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -116,24 +117,10 @@ const Testimoni = ({ token }) => {
       logoImg,
     };
 
-    const props2 = {
-      onRemove: () => {
-        // const index = logoImg.indexOf(file);
-        // const newFileList = logoImg.slice();
-        // newFileList.splice(index, 1);
-        setSsImg(null);
-      },
-      beforeUpload: (file) => {
-        setSsImg(file);
-        return false;
-      },
-      ssImg,
-    };
-
     const description = (id) => {
       axios
         .patch(
-          `https://app.ferdyfian.xyz/testimoni/${id}`,
+          `http://localhost:5000/testimoni/${id}`,
           { description: text },
           {
             headers: {
@@ -157,11 +144,10 @@ const Testimoni = ({ token }) => {
 
     const handleUpload = () => {
       data.append("logo", logoImg);
-      data.append("testimoni", ssImg);
       console.log(data);
       setUploading(true);
       axios
-        .post(`https://app.ferdyfian.xyz/testimoni/add`, data, {
+        .post(`http://localhost:5000/testimoni/add`, data, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
@@ -183,11 +169,6 @@ const Testimoni = ({ token }) => {
         <Upload {...props} maxCount={1} style={{ paddingBottom: "10px" }}>
           <Button icon={<UploadOutlined />}>Upload logo klien</Button>
         </Upload>
-        <Upload {...props2} maxCount={1}>
-          <Button style={{ marginTop: "10px" }} icon={<UploadOutlined />}>
-            Upload screenshot
-          </Button>
-        </Upload>
         <TextArea
           showCount
           autoSize={{ minRows: 2, maxRows: 6 }}
@@ -200,7 +181,7 @@ const Testimoni = ({ token }) => {
         <Button
           type="primary"
           onClick={handleUpload}
-          disabled={logoImg === null || ssImg === null || text === null}
+          disabled={logoImg === null || text === null}
           loading={uploading}
           style={{ marginTop: 16 }}
         >
@@ -272,26 +253,7 @@ const Testimoni = ({ token }) => {
                     width="100%"
                     height="100%"
                   />
-                  {show === true && <p>{e.description}</p>}
-                </div>
-                <div className={style.div2}>
-                  <MobileUi show={show}>
-                    <div className={style.testimoniSS}>
-                      <LazyLoadImage
-                        onClick={
-                          id === e.id ? () => setId(null) : () => setId(e.id)
-                        }
-                        style={{ maxWidth: 270 }}
-                        afterLoad={() => setShow(true)}
-                        beforeLoad={() => setShow(false)}
-                        alt=""
-                        src={`https://docs.google.com/uc?id=${e.testimoni_img_id}`} // use normal <img> attributes as props
-                        effect="blur"
-                        width="100%"
-                        height="100%"
-                      />
-                    </div>
-                  </MobileUi>
+                  <p>{e.description}</p>
                 </div>
                 {id === e.id && (
                   <Popconfirm

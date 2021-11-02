@@ -1,10 +1,20 @@
 import Layout from "../../components/layout";
 import style from "./project.module.css";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import img1 from "../../public/project-img/Interbio-Porto-Website-Template-scaled.jpg";
+import img2 from "../../public/project-img/BMW-AML-Website-scaled.jpg";
+import img3 from "../../public/project-img/BP-template-web-thumbnail-scaled.jpg";
+import img4 from "../../public/project-img/Discovery-hotel-1-1.jpg";
+import img5 from "../../public/project-img/Fore-web-template-scaled.jpg";
+import Img from "next/image";
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
+import ImageOpt from "react-optimized-image";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Row, Col, Divider, message } from "antd";
+import { Row, Col, Divider, message, Carousel } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const Project = () => {
@@ -13,7 +23,7 @@ const Project = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://app.ferdyfian.xyz/portfolio")
+      .get("http://localhost:5000/portfolio")
       .then((res) => {
         setData(res.data);
         setLoading(false);
@@ -35,7 +45,91 @@ const Project = () => {
   console.log(data);
   return (
     <Layout>
-      {loading === true && (
+      <div className={style.container}>
+        <Carousel autoplay autoplaySpeed={1800}>
+          <div className={style.header}>
+            <Img
+              className={style.imgHeader}
+              src={img1}
+              placeholder="blur"
+              alt=""
+              layout="fill"
+            />
+          </div>
+          <div className={style.header}>
+            <Img
+              className={style.imgHeader}
+              src={img2}
+              placeholder="blur"
+              alt=""
+              layout="fill"
+            />
+          </div>
+          <div className={style.header}>
+            <Img
+              className={style.imgHeader}
+              src={img3}
+              placeholder="blur"
+              alt=""
+              layout="fill"
+            />
+          </div>
+          <div className={style.header}>
+            <Img
+              className={style.imgHeader}
+              src={img4}
+              placeholder="blur"
+              alt=""
+              layout="fill"
+            />
+          </div>
+          <div className={style.header}>
+            <Img
+              className={style.imgHeader}
+              src={img5}
+              placeholder="blur"
+              alt=""
+              layout="fill"
+            />
+          </div>
+        </Carousel>
+        <h1
+          style={{
+            fontSize: "38px",
+            fontWeight: "200",
+            color: "rgb(100, 92, 92)",
+            marginTop: "20px",
+          }}
+        >
+          Projects
+        </h1>
+        <Row justify="center" style={{ marginBottom: "30px" }}>
+          {data.map((e) => {
+            return (
+              <LazyLoadComponent>
+                <Col
+                  span={24}
+                  md={12}
+                  xl={8}
+                  xs={24}
+                  sm={12}
+                  lg={8}
+                  style={{ height: 320, position: "relative" }}
+                >
+                  <LazyLoadImage
+                    src={`https://docs.google.com/uc?id=${e.img_id}`}
+                    effect="blur"
+                    width="100%"
+                    height="100%"
+                    style={{ objectFit: "cover" }}
+                  />
+                </Col>
+              </LazyLoadComponent>
+            );
+          })}
+        </Row>
+      </div>
+      {/* {loading === true && (
         <div
           style={{
             width: "100vw",
@@ -92,7 +186,7 @@ const Project = () => {
             })}
           </Row>
         </div>
-      )}
+      )} */}
     </Layout>
   );
 };

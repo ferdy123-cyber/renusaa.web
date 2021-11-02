@@ -47,6 +47,10 @@ a {
   border-radius: 10px;
 }
 
+.admLayout {
+  position: relative;
+}
+
 /* .activeBg {
   background-color: rgba(245, 245, 245, 1);
 } */
