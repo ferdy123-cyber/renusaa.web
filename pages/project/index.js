@@ -6,16 +6,11 @@ import img3 from "../../public/project-img/BP-template-web-thumbnail-scaled.jpg"
 import img4 from "../../public/project-img/Discovery-hotel-1-1.jpg";
 import img5 from "../../public/project-img/Fore-web-template-scaled.jpg";
 import Img from "next/image";
-import {
-  LazyLoadImage,
-  LazyLoadComponent,
-} from "react-lazy-load-image-component";
-import ImageOpt from "react-optimized-image";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Row, Col, Divider, message, Carousel } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
+import { Row, Col, message, Carousel } from "antd";
 
 const Project = () => {
   const [data, setData] = useState([]);
