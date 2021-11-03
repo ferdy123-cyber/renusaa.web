@@ -5,7 +5,6 @@ import { message, Comment } from "antd";
 import { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Img from "next/image";
-import HomeImg from "../../public/Image/branding-copyright-design-spaceship-graphic-concept.jpg";
 import axios from "axios";
 import Navbar from "../../components/navbar";
 
