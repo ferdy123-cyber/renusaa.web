@@ -264,7 +264,7 @@ const Testimoni = ({ token }) => {
                 }}
                 actions={[
                   <span key="comment-basic-reply-to">{e.city}</span>,
-                  <div className={style.del}>
+                  <div key="comment-basic-reply-to" className={style.del}>
                     <Popconfirm
                       title="Hapus file ini? anda tidak dapat memulihkannya"
                       onConfirm={() => confirm(e.id)}
