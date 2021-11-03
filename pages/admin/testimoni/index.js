@@ -1,7 +1,6 @@
 import Layout from "../../../components/layout admin";
 import style from "./testimoni.module.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import MobileUi from "../../../components/mobileUi";
 import {
   Divider,
   Button,
@@ -11,6 +10,9 @@ import {
   Upload,
   Popconfirm,
   Input,
+  Comment,
+  Avatar,
+  Tooltip,
 } from "antd";
 import { useState, useEffect } from "react";
 import { authPage } from "../../../protectedRoute";
@@ -23,7 +25,6 @@ import axios from "axios";
 const { TextArea } = Input;
 
 const Testimoni = ({ token }) => {
-  console.log(token);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -104,8 +105,9 @@ const Testimoni = ({ token }) => {
   const AddProject = () => {
     const [uploading, setUploading] = useState(false);
     const [logoImg, setLogoImg] = useState(null);
-    const [ssImg, setSsImg] = useState(null);
     const [text, setText] = useState(null);
+    const [name, setName] = useState(null);
+    const [city, setCity] = useState(null);
     const props = {
       onRemove: () => {
         setLogoImg(null);
@@ -121,7 +123,7 @@ const Testimoni = ({ token }) => {
       axios
         .patch(
           `http://localhost:5000/testimoni/${id}`,
-          { description: text },
+          { description: text, name: name, city: city },
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -166,22 +168,48 @@ const Testimoni = ({ token }) => {
 
     return (
       <>
-        <Upload {...props} maxCount={1} style={{ paddingBottom: "10px" }}>
+        <Upload {...props} maxCount={1} style={{ marginBottom: "10px" }}>
           <Button icon={<UploadOutlined />}>Upload logo klien</Button>
         </Upload>
+        <Input
+          placeholder="Nama brand..."
+          style={{ marginBottom: "10px", marginTop: "10px" }}
+          value={name}
+          onChange={(e) =>
+            setName(
+              e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1)
+            )
+          }
+        />
+        <Input
+          placeholder="Kota..."
+          style={{ paddingBottom: "10px" }}
+          value={city}
+          onChange={(e) =>
+            setCity(
+              e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1)
+            )
+          }
+        />
         <TextArea
           showCount
           autoSize={{ minRows: 2, maxRows: 6 }}
           maxLength={600}
           style={{ marginTop: "15px" }}
-          placeholder="Deskripsi..."
+          placeholder="Komentar..."
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) =>
+            setText(
+              e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1)
+            )
+          }
         />
         <Button
           type="primary"
           onClick={handleUpload}
-          disabled={logoImg === null || text === null}
+          disabled={
+            logoImg === null || text === null || name === null || city === null
+          }
           loading={uploading}
           style={{ marginTop: 16 }}
         >
@@ -224,55 +252,71 @@ const Testimoni = ({ token }) => {
         >
           <AddProject token={token} />
         </Modal>
-        {loading === false && (
-          <div className="map">
-            {data.map((e) => (
-              <div
-                className={style.data}
-                style={
-                  id === e.id
-                    ? { borderColor: "#ff4d4f" }
-                    : { borderColor: "transparent" }
-                }
-                key={e.id}
-              >
-                <div className={style.div1}>
-                  <LazyLoadImage
-                    onClick={
-                      id === e.id ? () => setId(null) : () => setId(e.id)
-                    }
+
+        {data.map((e) => {
+          return (
+            <div key={e.id} className={style.comment}>
+              <Comment
+                className={style.commentChild}
+                style={{
+                  backgroundColor: "rgb(235, 228, 228)",
+                  marginBottom: "15px",
+                }}
+                actions={[
+                  <span key="comment-basic-reply-to">{e.city}</span>,
+                  <div className={style.del}>
+                    <Popconfirm
+                      title="Hapus file ini? anda tidak dapat memulihkannya"
+                      onConfirm={() => confirm(e.id)}
+                      onCancel={cancel}
+                      okText="Ya"
+                      cancelText="Tidak"
+                    >
+                      <Button type="primary" shape="round" danger>
+                        Hapus
+                      </Button>
+                    </Popconfirm>
+                  </div>,
+                ]}
+                author={<a>{e.name}</a>}
+                avatar={
+                  <img
+                    className={style.none}
                     style={{
-                      width: "80%",
-                      maxWidth: "200px",
-                      maxHeight: "200px",
+                      width: "80px",
+                      height: "80px",
+                      marginRight: "15px",
                       objectFit: "contain",
+                      backgroundColor: "white",
+                      boxShadow: "0px 0px 1px",
                     }}
-                    alt=""
-                    src={`https://docs.google.com/uc?id=${e.logo_img_id}`} // use normal <img> attributes as props
-                    effect="blur"
-                    width="100%"
-                    height="100%"
+                    size="large"
+                    src={`https://docs.google.com/uc?id=${e.logo_img_id}`}
+                    alt="Han Solo"
                   />
-                  <p>{e.description}</p>
-                </div>
-                {id === e.id && (
-                  <Popconfirm
-                    className={style.delBtn}
-                    title="Hapus file ini? anda tidak dapat memulihkannya"
-                    onConfirm={() => confirm(e.id)}
-                    onCancel={cancel}
-                    okText="Ya"
-                    cancelText="Tidak"
-                  >
-                    <Button type="primary" shape="round" danger>
-                      Hapus
-                    </Button>
-                  </Popconfirm>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
+                }
+                content={
+                  <div className={style.content}>
+                    <span>{e.description}</span>
+                  </div>
+                }
+              />
+              <img
+                className={style.avatar}
+                style={{
+                  width: "120px",
+                  height: "120px",
+                  objectFit: "contain",
+                  backgroundColor: "white",
+                  boxShadow: "0px 0px 1px",
+                }}
+                size="large"
+                src={`https://docs.google.com/uc?id=${e.logo_img_id}`}
+                alt="Han Solo"
+              />
+            </div>
+          );
+        })}
       </div>
     </Layout>
   );

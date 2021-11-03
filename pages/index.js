@@ -21,12 +21,14 @@ import img11 from "../public/project-img/TSH-Web-template-scaled (1).jpg";
 import { Row, Col, Divider, message, Modal } from "antd";
 import { useState } from "react";
 import ListImage from "../components/project/listImg";
+import Navbar from "../components/navbar";
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
   console.log(ListImage);
   return (
     <Layout>
+      <Navbar screenHeight={1} />
       <div className={style.container}>
         <div className={style.header}>
           <Img

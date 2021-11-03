@@ -1,23 +1,21 @@
 import Layout from "../../components/layout";
 import style from "./testimoni.module.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import MobileUi from "../../components/mobileUi";
-import { Divider, message, Input } from "antd";
+import { message, Comment } from "antd";
 import { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Img from "next/image";
+import HomeImg from "../../public/Image/branding-copyright-design-spaceship-graphic-concept.jpg";
 import axios from "axios";
+import Navbar from "../../components/navbar";
 
 const Testimoni = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [show, setShow] = useState(false);
   const getData = () => {
-    setLoading(true);
     axios
       .get("http://localhost:5000/testimoni")
       .then((res) => {
         setData(res.data.data);
-        setLoading(false);
       })
       .catch((error) => {
         message.error("Gagal memproses data");
@@ -29,57 +27,66 @@ const Testimoni = () => {
 
   return (
     <Layout>
+      <Navbar screenHeight={2000} />
       <div className={style.container}>
-        <Divider
-          style={{
-            fontSize: "20px",
-            marginTop: "15px",
-            marginBottom: "40px",
-          }}
-          orientation="left"
-        >
-          Testimoni
-        </Divider>
-        {loading === false && (
-          <div className="map">
-            {data.map((e) => (
-              <div className={style.data} key={e.id}>
-                <div className={style.div1}>
-                  <LazyLoadImage
-                    style={{
-                      width: "80%",
-                      maxWidth: "200px",
-                      maxHeight: "200px",
-                      objectFit: "contain",
-                    }}
-                    alt=""
-                    src={`https://docs.google.com/uc?id=${e.logo_img_id}`} // use normal <img> attributes as props
-                    effect="blur"
-                    width="100%"
-                    height="100%"
-                  />
-                  {show === true && <p>{e.description}</p>}
-                </div>
-                <div className={style.div2}>
-                  <MobileUi show={show}>
-                    <div className={style.testimoniSS}>
-                      <LazyLoadImage
-                        style={{ maxWidth: 270 }}
-                        afterLoad={() => setShow(true)}
-                        beforeLoad={() => setShow(false)}
-                        alt=""
-                        src={`https://docs.google.com/uc?id=${e.testimoni_img_id}`} // use normal <img> attributes as props
-                        effect="blur"
-                        width="100%"
-                        height="100%"
-                      />
+        <div className={style.header}>
+          <h1>Testimonial</h1>
+          <p>
+            Kepuasan klien adalah hal penting bagi kami. Lihat hal apa saja yang
+            klien katakan tentang kami.
+          </p>
+        </div>
+        <div className={style.data}>
+          {data.map((e) => {
+            return (
+              <div key={e.id} className={style.comment}>
+                <Comment
+                  className={style.commentChild}
+                  style={{
+                    backgroundColor: "rgb(235, 228, 228)",
+                    marginBottom: "25px",
+                  }}
+                  actions={[<span key="comment-basic-reply-to">{e.city}</span>]}
+                  author={<a>{e.name}</a>}
+                  avatar={
+                    <img
+                      className={style.none}
+                      style={{
+                        width: "80px",
+                        height: "80px",
+                        marginRight: "15px",
+                        objectFit: "contain",
+                        backgroundColor: "white",
+                        boxShadow: "0px 0px 1px",
+                      }}
+                      size="large"
+                      src={`https://docs.google.com/uc?id=${e.logo_img_id}`}
+                      alt="Han Solo"
+                    />
+                  }
+                  content={
+                    <div className={style.content}>
+                      <span>{e.description}</span>
                     </div>
-                  </MobileUi>
-                </div>
+                  }
+                />
+                <img
+                  className={style.avatar}
+                  style={{
+                    width: "120px",
+                    height: "120px",
+                    objectFit: "contain",
+                    backgroundColor: "white",
+                    boxShadow: "0px 0px 1px",
+                  }}
+                  size="large"
+                  src={`https://docs.google.com/uc?id=${e.logo_img_id}`}
+                  alt="Han Solo"
+                />
               </div>
-            ))}
-          </div>
-        )}
+            );
+          })}
+        </div>
       </div>
     </Layout>
   );

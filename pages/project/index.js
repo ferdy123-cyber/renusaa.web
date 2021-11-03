@@ -10,11 +10,26 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Row, Col, message, Carousel } from "antd";
+import { Row, Col, message, Carousel, Image } from "antd";
+import Navbar from "../../components/navbar";
 
 const Project = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [id, setId] = useState(null);
+  const [visible, setVisible] = useState(false);
+  const [imgId, setImgId] = useState(null);
+
+  const openImage = (id) => {
+    setImgId(id);
+    setVisible(true);
+  };
+
+  const change = (val) => {
+    setVisible(val);
+    setId(null);
+  };
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -37,11 +52,12 @@ const Project = () => {
   }, []);
   // const getData = () => {};
 
-  console.log(data);
+  console.log(id);
   return (
     <Layout>
+      <Navbar screenHeight={15} />
       <div className={style.container}>
-        <Carousel autoplay autoplaySpeed={1800}>
+        <Carousel autoplay autoplaySpeed={1800} effect="fade" dots={false}>
           <div className={style.header}>
             <Img
               className={style.imgHeader}
@@ -98,10 +114,19 @@ const Project = () => {
         >
           Projects
         </h1>
-        <Row justify="center" style={{ marginBottom: "30px" }}>
+        <Row
+          justify="center"
+          style={{
+            margin: "auto",
+            marginBottom: "30px",
+            width: "95vw",
+          }}
+        >
           {data.map((e) => {
             return (
               <Col
+                onMouseEnter={() => setId(e.id)}
+                onMouseLeave={() => setId(null)}
                 key={e.id}
                 span={24}
                 md={12}
@@ -110,6 +135,7 @@ const Project = () => {
                 sm={12}
                 lg={8}
                 style={{ height: 320, position: "relative" }}
+                onClick={() => openImage(e.img_id)}
               >
                 <LazyLoadImage
                   src={`https://docs.google.com/uc?id=${e.img_id}`}
@@ -117,12 +143,20 @@ const Project = () => {
                   width="100%"
                   height="100%"
                   style={{ objectFit: "cover" }}
+                  className={style.img}
                 />
+                <div
+                  className={style.bgHover}
+                  style={id === e.id ? { opacity: 1 } : { opacity: 0 }}
+                >
+                  <h1>Preview</h1>
+                </div>
               </Col>
             );
           })}
         </Row>
       </div>
+
       {/* {loading === true && (
         <div
           style={{
@@ -181,6 +215,17 @@ const Project = () => {
           </Row>
         </div>
       )} */}
+      <div style={{ display: "none" }}>
+        <Image.PreviewGroup
+          style={{ height: "100px" }}
+          preview={{
+            visible,
+            onVisibleChange: (vis) => change(vis),
+          }}
+        >
+          <Image src={`https://docs.google.com/uc?id=${imgId}`} />
+        </Image.PreviewGroup>
+      </div>
     </Layout>
   );
 };

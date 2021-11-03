@@ -4,7 +4,8 @@ import brandLogo from "../public/Image/REENUSA LOGO PUTIH-04.png";
 import Link from "next/link";
 import { PauseOutlined } from "@ant-design/icons";
 
-const Navbar = () => {
+const Navbar = ({ screenHeight }) => {
+  console.log(screenHeight);
   const [openNav, setOpenNav] = useState(false);
   const [scroll, setScroll] = useState(false);
   const setNav = () => {
@@ -18,7 +19,7 @@ const Navbar = () => {
   useEffect(() => {
     window.addEventListener("scroll", () => {
       const scrollHeight = window.pageYOffset;
-      const viewHeight = document.documentElement.clientHeight;
+      const viewHeight = document.documentElement.clientHeight / screenHeight;
       if (scrollHeight > viewHeight) {
         setScroll(true);
       } else {
