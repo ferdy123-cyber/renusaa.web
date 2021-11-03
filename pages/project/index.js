@@ -223,7 +223,7 @@ const Project = () => {
             onVisibleChange: (vis) => change(vis),
           }}
         >
-          <Image src={`https://docs.google.com/uc?id=${imgId}`} />
+          <Image src={`https://docs.google.com/uc?id=${imgId}`} alt="" />
         </Image.PreviewGroup>
       </div>
     </Layout>
