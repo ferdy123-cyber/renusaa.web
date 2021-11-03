@@ -3,10 +3,9 @@ import style from "./testimoni.module.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { message, Comment } from "antd";
 import { useState, useEffect } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import Img from "next/image";
 import axios from "axios";
 import Navbar from "../../components/navbar";
+import LazyLoad from "react-lazyload";
 
 const Testimoni = () => {
   const [data, setData] = useState([]);
@@ -38,7 +37,12 @@ const Testimoni = () => {
         <div className={style.data}>
           {data.map((e) => {
             return (
-              <div key={e.id} className={style.comment}>
+              <LazyLoad
+                height={400}
+                offset={50}
+                key={e.id}
+                className={style.comment}
+              >
                 <Comment
                   className={style.commentChild}
                   style={{
@@ -82,7 +86,7 @@ const Testimoni = () => {
                   src={`https://docs.google.com/uc?id=${e.logo_img_id}`}
                   alt="Han Solo"
                 />
-              </div>
+              </LazyLoad>
             );
           })}
         </div>

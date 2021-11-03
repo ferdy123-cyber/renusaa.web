@@ -215,17 +215,19 @@ const Project = () => {
           </Row>
         </div>
       )} */}
-      <div style={{ display: "none" }}>
-        <Image.PreviewGroup
-          style={{ height: "100px" }}
-          preview={{
-            visible,
-            onVisibleChange: (vis) => change(vis),
-          }}
-        >
-          <Image src={`https://docs.google.com/uc?id=${imgId}`} alt="" />
-        </Image.PreviewGroup>
-      </div>
+      {imgId !== null && (
+        <div style={{ display: "none" }}>
+          <Image.PreviewGroup
+            style={{ height: "100px" }}
+            preview={{
+              visible,
+              onVisibleChange: (vis) => change(vis),
+            }}
+          >
+            <Image src={`https://docs.google.com/uc?id=${imgId}`} alt="" />
+          </Image.PreviewGroup>
+        </div>
+      )}
     </Layout>
   );
 };
