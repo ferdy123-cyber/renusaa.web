@@ -15,7 +15,6 @@ import Navbar from "../../components/navbar";
 
 const Project = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [id, setId] = useState(null);
   const [visible, setVisible] = useState(false);
   const [imgId, setImgId] = useState(null);
@@ -144,6 +143,7 @@ const Project = () => {
                   height="100%"
                   style={{ objectFit: "cover" }}
                   className={style.img}
+                  alt=""
                 />
                 <div
                   className={style.bgHover}
@@ -156,65 +156,6 @@ const Project = () => {
           })}
         </Row>
       </div>
-
-      {/* {loading === true && (
-        <div
-          style={{
-            width: "100vw",
-            height: "90vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <LoadingOutlined style={{ fontSize: 54 }} spin />
-        </div>
-      )}
-      {loading === false && (
-        <div className={style.container}>
-          <Divider
-            style={{
-              fontSize: "20px",
-              marginTop: "25px",
-              marginBottom: "20px",
-            }}
-            orientation="left"
-          >
-            Portfolio
-          </Divider>
-          <Row
-            justify="space-around"
-            gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
-          >
-            {data.map((e) => {
-              return (
-                <Col
-                  key={e.id}
-                  className="gutter-row"
-                  style={{
-                    maxHeight: "420px",
-                    width: "100%",
-                    maxWidth: "420px",
-                    height: "100vw",
-                  }}
-                >
-                  <LazyLoadImage
-                    className={style.image}
-                    style={{
-                      objectFit: "contain",
-                    }}
-                    alt=""
-                    src={`https://docs.google.com/uc?id=${e.img_id}`} // use normal <img> attributes as props
-                    effect="blur"
-                    width="100%"
-                    height="100%"
-                  />
-                </Col>
-              );
-            })}
-          </Row>
-        </div>
-      )} */}
       {imgId !== null && (
         <div style={{ display: "none" }}>
           <Image.PreviewGroup
