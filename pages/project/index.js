@@ -30,12 +30,10 @@ const Project = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
     axios
       .get("http://localhost:5000/portfolio")
       .then((res) => {
         setData(res.data);
-        setLoading(false);
       })
       .catch((error) => {
         if (error.response && error.response.data) {
@@ -46,7 +44,6 @@ const Project = () => {
           message.error(error.message);
           message.error("Ada masalah saat menampilkan data");
         }
-        setLoading(false);
       });
   }, []);
   // const getData = () => {};
