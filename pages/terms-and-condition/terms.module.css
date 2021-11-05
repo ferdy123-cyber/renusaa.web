@@ -60,7 +60,6 @@
 
 .section {
   color: #41403c;
-  padding-right: 15px;
   margin-bottom: 25px;
   width: 100%;
 }
@@ -77,6 +76,7 @@
 
 .section ul li,
 .section p {
+  text-align: center;
   font-size: 15px;
   font-weight: 400;
   margin-bottom: 10px;
@@ -90,8 +90,8 @@
     margin-bottom: 20px;
   }
   .content {
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
     padding-top: 10px;
   }
   .section h1 {
@@ -105,11 +105,15 @@
     margin-left: 16px;
   }
 
-  .section ul li,
+  .section ul li {
+    font-size: 13px;
+    font-weight: 400;
+    margin-left: -20px;
+    margin-right: 3px;
+  }
+
   .section p {
     font-size: 13px;
     font-weight: 400;
-    margin-bottom: 10px;
-    text-align: left;
   }
 }
