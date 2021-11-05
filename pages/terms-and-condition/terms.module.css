@@ -1,28 +1,115 @@
 .container {
-    width: 97%;
-    max-width: 1300px;
-    margin: auto;
-    padding-bottom: 50px;
-    margin-top: 20px;
+  width: 100vw;
+  margin: auto;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+.header {
+  width: 100%;
+  height: 500px;
+  background-color: rgb(24, 32, 71);
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: fit-content;
+  width: fit-content;
+}
+
+.title h1 {
+  text-align: center;
+  color: #efeee9;
+  font-size: 40px;
+  font-weight: 500px;
+}
+
+.date {
+  background-color: rgb(241, 214, 125);
+  width: 200px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin: auto;
+}
+
+.content {
+  background-color: white;
+  width: 95%;
+  max-width: 1300px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 60px;
+  margin: auto;
+  margin-top: -120px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0px 0px 18px #61615f;
 }
 
 .section {
-    color: rgb(37, 36, 36);
-    padding-right: 15px;
-    margin-bottom: 15px;
+  color: #41403c;
+  padding-right: 15px;
+  margin-bottom: 25px;
+  width: 100%;
 }
 
 .section h1 {
-    font-weight: 700;
+  text-align: center;
+  font-weight: 500;
 }
 
 .section h2 {
-    font-weight: 600;
+  font-weight: 500;
+  margin-left: 23px;
 }
 
-.section ul li, .section p {
-    font-size: 18px;
+.section ul li,
+.section p {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+@media (max-width: 580px) {
+  .title h1 {
+    font-size: 25px;
+    font-weight: 500px;
+    margin-bottom: 20px;
+  }
+  .content {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 10px;
+  }
+  .section h1 {
+    text-align: center;
     font-weight: 500;
+    font-size: 22px;
+  }
+
+  .section h2 {
+    font-weight: 500;
+    margin-left: 16px;
+  }
+
+  .section ul li,
+  .section p {
+    font-size: 13px;
+    font-weight: 400;
     margin-bottom: 10px;
-    text-align: justify;
+    text-align: left;
+  }
 }

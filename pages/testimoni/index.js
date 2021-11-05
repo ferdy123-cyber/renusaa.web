@@ -25,7 +25,7 @@ const Testimoni = () => {
 
   return (
     <Layout>
-      <Navbar screenHeight={2000} />
+      <Navbar whitePage={true} screenHeight={2000} />
       <div className={style.container}>
         <div className={style.header}>
           <h1>Testimonial</h1>

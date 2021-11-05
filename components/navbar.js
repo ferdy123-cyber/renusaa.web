@@ -4,8 +4,8 @@ import brandLogo from "../public/Image/REENUSA LOGO PUTIH-04.png";
 import Link from "next/link";
 import { PauseOutlined } from "@ant-design/icons";
 
-const Navbar = ({ screenHeight }) => {
-  console.log(screenHeight);
+const Navbar = ({ screenHeight, whitePage }) => {
+  console.log(whitePage);
   const [openNav, setOpenNav] = useState(false);
   const [scroll, setScroll] = useState(false);
   const setNav = () => {
@@ -33,7 +33,9 @@ const Navbar = ({ screenHeight }) => {
     <div
       className={`nav-bar ${openNav === true ? "activeNav" : ""} ${
         scroll ? "setBg" : ""
-      } ${openNav && scroll ? "activeBg" : ""}`}
+      } ${openNav && scroll ? "activeBg" : ""} ${
+        whitePage === true ? "setBg" : ""
+      }`}
     >
       <div className="brand">
         <Link href="/">
@@ -52,7 +54,10 @@ const Navbar = ({ screenHeight }) => {
         </div>
         <div className={`collapse-menu ${openNav === true ? "active" : ""}`}>
           <p>TENTANG</p>
-          <p>PRICING</p>
+
+          <Link href="/pricing">
+            <p>PRICING</p>
+          </Link>
           <Link href="/project">
             <p>PORTFOLIO</p>
           </Link>
