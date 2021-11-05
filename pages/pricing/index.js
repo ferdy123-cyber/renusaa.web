@@ -38,7 +38,7 @@ const Pricing = () => {
 
   return (
     <Layout>
-      <Navbar whitePage={true} />
+      {/* <Navbar whitePage={true} />
       <div className="container-pricing">
         <Divider
           style={{
@@ -95,7 +95,8 @@ const Pricing = () => {
             </div>
           );
         })}
-      </div>
+      </div> */}
+      hallo
     </Layout>
   );
 };
